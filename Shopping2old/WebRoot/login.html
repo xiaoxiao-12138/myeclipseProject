@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset=utf-8 >
+
+<title>欢迎登陆</title>
+
+<link rel="stylesheet" href="css/login.css">
+
+<body>
+
+<div class="login-container">
+	<h1>欢迎登陆</h1>
+	
+	<div class="connect">
+		<p>sise.shopping.com</p>
+	</div>
+	
+	<form action="UserSelectServlet" method="post" id="loginForm">
+		<div>
+			<input type="text" name="userId" class="username" placeholder="用户名" autocomplete="off"/>
+		</div>
+		<div>
+			<input type="password" name="userPassword" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
+		</div>
+		<button id="submit" type="submit">登陆</button>
+	</form>
+
+	<a href="register.html">
+		<button type="button" class="register-tis" style="background:fuchsia;">还有没有账号？</button>
+	</a>
+
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/common.js"></script>
+<!--背景图片自动更换-->
+<script src="js/supersized.3.2.7.min.js"></script>
+<script src="js/supersized-init.js"></script>
+<!--表单验证-->
+<script src="js/jquery.validate.min.js?var1.14.0"></script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+</div>
+</body>
+</html>

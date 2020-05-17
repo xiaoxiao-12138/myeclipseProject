@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+	<Resource name="AA" auth="Container"
+		driverClassName="com.mysql.jdbc.Driver"
+		username="root"
+		password="lbl123..."
+		type="javax.sql.DataSource"
+		url="jdbc:mysql://localhost:3306/shopping?characterEncoding=UTF-8"/>
+
+</Context>
