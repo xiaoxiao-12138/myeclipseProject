@@ -9,25 +9,25 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import com.shop.db.DateSourseUtil;
 import com.shop.entity.Product;
-
-//ÉÌÆ·ÐÅÏ¢²Ù×÷
+//12138
+//ï¿½ï¿½Æ·ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 public class ProductDao {
 
-	//²éÑ¯È«²¿ÉÌÆ·
+	//ï¿½ï¿½Ñ¯È«ï¿½ï¿½ï¿½ï¿½Æ·
 	public static List<Product> selectAllProduct() throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		List<Product> products = runner.query("select * from Product;", new BeanListHandler<Product>(Product.class));
 		return products;
 	}
 	
-	//²éÑ¯·ÖÀàºóµÄÉÌÆ·
+	//ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ·
 	public static List<Product> selectOneProduct(String type) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		List<Product> products = runner.query("select * from Product where type = ?;", new BeanListHandler<Product>(Product.class),type);
 		return products;
 	}
 	
-	//Ä£ºý²éÑ¯ÉÌÆ·
+	//Ä£ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Æ·
 	public static List<Product> vagueSelectProduct(String name) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		name = "%" + name + "%";
@@ -36,49 +36,49 @@ public class ProductDao {
 	}
 	
 
-	//ÅÐ¶Ï¹ºÂòµÄÊýÁ¿ÊÇ·ñ´óÓÚ¿â´æµÄ
+	//ï¿½Ð¶Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½
 	public static Product isEnoughQuanty(String productId,int productQuanty) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		Product product = runner.query("select * from Product where productId = ? ;", new BeanHandler<Product>(Product.class), productId);
 		
-		//Èç¹û¹ºÂòÊýÁ¿´óÓÚ¿â´æÊýÁ¿£¬·µ»ØÊµÀý¶ÔÏó£¬·ñÔò·µ»Ønull
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ó£¬·ï¿½ï¿½ò·µ»ï¿½null
 		if(productQuanty <= product.getQuanty()){
 			return product;
 		}
 		return null;
 	}
 	
-	//Í¨¹ýÉÌÆ·±àºÅºÍ¹ºÂòµÄÊýÁ¿£¬¸üÐÂ¿â´æµÄÊýÁ¿
+	//Í¨ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ÅºÍ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public static void updateProduct(String productId,int productQuanty) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		runner.update("update product set quanty = quanty - ? where productId = ? ;", productQuanty,productId);
 	}
 	
-	//Í¨¹ýÉÌÆ·¶ÔÏó£¨ID£¬µ¥¼Û£¬ÊýÁ¿£©À´ÖØÐÂ±£´æÉÌÆ·
+	//Í¨ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½Û£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½ï¿½ï¿½Æ·
 	public static void saveProduct(Product Products) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		runner.update("update product set productPrice=?,quanty=? where productId = ? ;",Products.getProductPrice(),Products.getQuanty(),Products.getProductId());
 	}
 	
-	//Í¨¹ýÉÌÆ·¶ÔÏó£¨ID£¬Ãû³Æ£¬µ¥¼Û£¬ÊýÁ¿£©À´Ìí¼ÓÐÂµÄÉÌÆ·
+	//Í¨ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½Û£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½Æ·
 	public static void addProduct(Product Product) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		runner.update("insert into product values(?,?,?,?,?);",Product.getProductId(),Product.getProductName(),Product.getProductPrice(),Product.getQuanty(),Product.getType());
 	}
 	
-	//Í¨¹ýÉÌÆ·¶ÔÏó£¨ID£©À´É¾³ýÉÌÆ·
+	//Í¨ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Æ·
 	public static void deleteProduct(Product Product) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		runner.update("update product set quanty = 0 where productId = ? ;",Product.getProductId());
 	}
 	
-	//Í¨¹ýÉÌÆ·¶ÔÏó£¨ID£¬µ¥¼Û£©À´ÐÞ¸ÄÉÌÆ·µ¥¼Û
+	//Í¨ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½Û£ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 	public static void adjustProductPrice(String productId,String produPrice) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		runner.update("update product set productPrice = ? where productId = ? ;",Double.valueOf(produPrice),productId);
 	}
 	
-	//Í¨¹ýÉÌÆ·¶ÔÏó£¨ID£¬¿â´æ£©À´ÐÞ¸ÄÉÌÆ·µ¥¼Û
+	//Í¨ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½æ£©ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 	public static void adjustProductQuanty(String productId,String quanty) throws SQLException{
 		QueryRunner runner = new QueryRunner(DateSourseUtil.getDataSource());
 		runner.update("update product set quanty = ? where productId = ? ;",Integer.valueOf(quanty),productId);
